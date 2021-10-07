@@ -1,2 +1,3 @@
 # Password-Generator
-JavaScript Password Gen
+
+JavaScript Password Generator Project by Hank Kapka
