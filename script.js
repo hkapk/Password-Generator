@@ -3,13 +3,15 @@
 //set length between 8 and 128
 //var length = [>8 &&<128];
 //set upper and lower characters
-var lowerCase=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n" , "o", "p", "q" , "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n" , "o", "p", "q" , "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 //console.log(passLower);
-var upperCase=["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 //set numeric characters
-var number=["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var number = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 //set special character types
-var special=["?", "!", "&", "*"];
+var special = ["?", "!", "&", "*"];
+
+console.log(lowerCase, upperCase, number, special);
 
 //prompt for length of 8 characters
 //then at least 1 character type listed above must be selected
@@ -18,14 +20,13 @@ var special=["?", "!", "&", "*"];
 
 
 function askPassword() {
-    var passwordLength = prompt("How long do you want your password to be? Enter a number between 8 and 128"); 
+    var length = prompt("How long do you want your password to be? Enter a number between 8 and 128"); 
     //need to add a check for if less than 8 and greater than 128 alert and return null
     var passLower = confirm("Include lower case?");
     var passUpper = confirm("Include upper case?");
     var passNumber = confirm("Should the password contain numbers?");
     var passSpecial = confirm ("Should the password include special characters?");
     
-    //place to record the answers
     var answers = {
         length: length,
         passLower: passLower,
@@ -33,8 +34,10 @@ function askPassword() {
         passNumber: passNumber,
         passSpecial: passSpecial
     }
-    return answers;
     console.log(answers);
+    return answers;
+
+    
     //check for all other responses 
     if (passLower === false && 
         passUpper === false && 
@@ -43,10 +46,6 @@ function askPassword() {
         alert("you must answer enter a desired password length and enter OK to the following questions")
         return null;
 }
-
-//store the number that the user inputs
-
-//var answers = [lowerCase, numeral, special]
 
 // function randomize(array){
 //     var randI = Math.floor(Math.random()* array.length)
@@ -58,34 +57,35 @@ function askPassword() {
 
 //function to generate the password based on the user responses
 function generatePassword() {
-    var choices = askPassword ();
+    var pOption = askPassword ();
     var choiceOfAnswers = [];
     var pWord = "";
 
 //incorporate user responses to push the choice of answers to the passWord
-    if (choiceOfAnswers.passLower) {
+    if (pOption.passLower) {
         for (var i of lowerCase)
             choiceOfAnswers.push(i);    
 }
-    if (choiceOfAnswers.passUpper) {
+    if (pOption.passUpper) {
         for (var i of upperCase)
             choiceOfAnswers.push(i);    
 }
-    if (choiceOfAnswers.passNumber) {
+    if (pOption.passNumber) {
         for (var i of number)
             choiceOfAnswers.push(i);    
 }
-    if (choiceOfAnswers.passSpecial) {
+    if (pOption.passSpecial) {
         for (var i of special)
             choiceOfAnswers.push(i);    
 }
 
 // logs the number entered to question 1 console.log(choiceOfAnswers);
 
-for (var i = 0; i < choiceOfAnswers.length; i++) {
+for (var i = 0; i < pOption.length; i++) {
     pWord += choiceOfAnswers[Math.floor(Math.random() * choiceOfAnswers.length)];
 }
-console.log(pWord);
+
+return pWord;
 }
 
 
@@ -103,6 +103,10 @@ function writePassword() {
 
 }
 
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
 //use this for a random number: 
 
 // function to generate a random numeric value
@@ -113,7 +117,3 @@ function writePassword() {
   //};
 
 //
-generateBtn.addEventListener("click", askPassword);
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
