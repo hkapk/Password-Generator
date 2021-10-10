@@ -2,6 +2,8 @@
 
 JavaScript Password Generator Project by Hank Kapka
 
+This "random" password generator pulls from arrays of characters to generate a password of the users' desired length.
+
 GIVEN I need a new, secure password
 WHEN I click the button to generate a password
 THEN I am presented with a series of prompts for password criteria

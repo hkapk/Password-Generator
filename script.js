@@ -18,7 +18,6 @@ console.log(lowerCase, upperCase, number, special);
 //when all prompts are answered the password is generated matching the selected criteria
 
 
-
 function askPassword() {
     var length = prompt("How long do you want your password to be? Enter a number between 8 and 128"); 
     //need to add a check for if less than 8 and greater than 128 alert and return null
@@ -30,7 +29,7 @@ function askPassword() {
     var answers = {
         length: length,
         passLower: passLower,
-        passLower: passLower,
+        passUpper: passUpper,
         passNumber: passNumber,
         passSpecial: passSpecial
     }
@@ -47,19 +46,12 @@ function askPassword() {
         return null;
 }
 
-// function randomize(array){
-//     var randI = Math.floor(Math.random()* array.length)
-//     var randoEl = array [randI]
-//     return randoEl 
-// }
-
-// randomize();
 
 //function to generate the password based on the user responses
 function generatePassword() {
     var pOption = askPassword ();
     var choiceOfAnswers = [];
-    var pWord = "";
+    var passWord = "";
 
 //incorporate user responses to push the choice of answers to the passWord
     if (pOption.passLower) {
@@ -82,10 +74,10 @@ function generatePassword() {
 // logs the number entered to question 1 console.log(choiceOfAnswers);
 
 for (var i = 0; i < pOption.length; i++) {
-    pWord += choiceOfAnswers[Math.floor(Math.random() * choiceOfAnswers.length)];
+    passWord += choiceOfAnswers[Math.floor(Math.random() * choiceOfAnswers.length)];
 }
 
-return pWord;
+return passWord;
 }
 
 
@@ -117,3 +109,12 @@ generateBtn.addEventListener("click", writePassword);
   //};
 
 //
+
+
+// function randomize(array){
+//     var randI = Math.floor(Math.random()* array.length)
+//     var randoEl = array [randI]
+//     return randoEl 
+// }
+
+// randomize();
